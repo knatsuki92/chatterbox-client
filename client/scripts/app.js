@@ -24,10 +24,11 @@ app.init = function(){
     event.preventDefault();
     var text = $("#text").val();
     var name = $("#username").val();
+    var roomName = $("#roomname").val();
     var newMessage = {};
     newMessage.username = name;
     newMessage.text = text;
-    newMessage.roomname = "HR25";
+    newMessage.roomname = roomName;
     app.send(newMessage);
     app.fetch();
   });
@@ -78,7 +79,6 @@ app.refresh = function(data, callback){
   };
   var createMessageFriends = function(message){
     var innerHtml = "<div><div>username: " +"<a class = 'username' href='#'>" + message.username + "</a>"+ "</div><div class = 'friend'>text: "+ message.text + "</div><div>room: "+ message.roomname +"</div><div>createdAt: "+ message.createdAt +   "</div></div><br />";
-    console.log("It works");
     return innerHtml;
   };
 
@@ -111,7 +111,7 @@ app.refresh = function(data, callback){
 
 };
 
-app.rooms ={};
+app.rooms = {};
 app.createRooms = function(){
   for( key in this.rooms){
     // var option = $("<option>")
